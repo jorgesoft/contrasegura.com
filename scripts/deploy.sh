@@ -13,3 +13,10 @@ aws cloudformation deploy \
 # Upload the website to the S3 bucket
 aws s3 cp src/website/index.html s3://${BUCKET_NAME}/index.html
 aws s3 cp src/website/script.js s3://${BUCKET_NAME}/script.js
+
+# Deploy CloudFront Distribution pointing to the S3 bucket
+aws cloudformation deploy \
+  --template-file templates/cloudfront-template.yaml \
+  --stack-name my-cloudfront-distribution \
+  --parameter-overrides BucketName=${BUCKET_NAME} \
+  --capabilities CAPABILITY_NAMED_IAM
