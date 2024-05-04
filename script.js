@@ -40,7 +40,7 @@ function analyzeStrength(password) {
     switch (result.score) {
         case 0:
         case 1:
-            return 'Weak (' + result.feedback.warning + ')';
+            return 'Weak';
         case 2:
             return 'Fair';
         case 3:
