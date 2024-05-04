@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Password Generator</h2>
+        <div class="form-group">
+            <label for="passwordLength">Password Length: <span id="lengthDisplay">12</span></label>
+            <input type="range" class="form-control-range" id="passwordLength" min="4" max="64" value="12" oninput="updateLengthDisplay(this.value); generatePassword();">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeUppercase" onchange="generatePassword()" checked>
+            <label class="form-check-label" for="includeUppercase">Include Uppercase Letters</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeNumbers" onchange="generatePassword()" checked>
+            <label class="form-check-label" for="includeNumbers">Include Numbers</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeSymbols" onchange="generatePassword()">
+            <label class="form-check-label" for="includeSymbols">Include Symbols</label>
+        </div>
+        <button id="copyBtn" class="btn btn-info mt-3" onclick="copyPassword()">Copy Password</button>
+        <div class="mt-3">
+            <label>Password: </label>
+            <input type="text" class="form-control" id="generatedPassword" readonly>
+        </div>
+        <div class="mt-3">
+            <label>Strength: </label>
+            <span id="passwordStrength"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
