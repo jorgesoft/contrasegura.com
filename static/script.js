@@ -13,7 +13,7 @@ function generatePassword() {
     const includeSymbols = document.getElementById('includeSymbols').checked;
     const password = createPassword(length, includeUppercase, includeNumbers, includeSymbols);
     document.getElementById('generatedPassword').value = password;
-    document.getElementById('passwordStrength').textContent = analyzeStrength(password);
+    analyzeStrength(password);
 }
 
 function createPassword(length, upper, numbers, symbols) {
@@ -37,19 +37,43 @@ function createPassword(length, upper, numbers, symbols) {
 
 function analyzeStrength(password) {
     const result = zxcvbn(password);
+    const strengthDisplay = document.getElementById('passwordStrength');
+    let strengthText = '';
+    let strengthClass = '';
+    let crackTimes = `
+        <ul>
+            <li>Online (10 times / second): ${result.crack_times_display.online_no_throttling_10_per_second}</li>
+            <li>Offline (10k times / second): ${result.crack_times_display.offline_slow_hashing_1e4_per_second}</li>
+        </ul>
+    `;
+
     switch (result.score) {
         case 0:
+            strengthText = 'Muy débil';
+            strengthClass = 'text-danger';
+            break;
         case 1:
-            return 'Weak';
+            strengthText = 'Débil';
+            strengthClass = 'text-danger';
+            break;
         case 2:
-            return 'Fair';
+            strengthText = 'Mediana';
+            strengthClass = 'text-warning';
+            break;
         case 3:
-            return 'Good';
+            strengthText = 'Buena';
+            strengthClass = 'text-primary';
+            break;
         case 4:
-            return 'Strong';
+            strengthText = 'Fuerte';
+            strengthClass = 'text-success';
+            break;
         default:
-            return 'Weak';
+            strengthText = 'Muy débil';
+            strengthClass = 'text-danger';
     }
+
+    strengthDisplay.innerHTML = `<span class="${strengthClass}">${strengthText}</span>`;
 }
 
 function copyPassword() {
