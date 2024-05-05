@@ -1,68 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF5JKX8YE3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-WF5JKX8YE3');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Password Generator | Create Strong & Random Passwords Online</title>
-    <meta name="description" content="Generate secure and random passwords online with our free tool. Customize length, include symbols, numbers, and uppercase for enhanced security. Try it now!">
+    <title>Generador de Contraseñas Seguras | Crea Contraseñas Fuertes y Aleatorias en Línea</title>
+    <meta name="description" content="Genera contraseñas seguras y aleatorias en línea con nuestra herramienta gratuita. Personaliza la longitud, incluye símbolos, números y mayúsculas para una mayor seguridad. ¡Pruébalo ahora!">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!--favicon links -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- enlaces favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <!-- Etiquetas Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://contrasegura.com/">
+    <meta property="og:title" content="Generador de Contraseñas Seguras | Crea Contraseñas Fuertes y Aleatorias en Línea">
+    <meta property="og:description" content="Genera contraseñas seguras y aleatorias en línea con nuestra herramienta gratuita. Personaliza la longitud, incluye símbolos, números y mayúsculas para una mayor seguridad. ¡Pruébalo ahora!">
+    <meta property="og:image" content="https://contrasegura.com/static/og-picture.webp">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Password Generator</h1>
-        <p>Create strong, random passwords locally in your browser. Perfect for protecting your online security.</p>
+        <h1>Generador de Contraseñas</h1>
+        <p>Crea contraseñas fuertes y aleatorias localmente en tu navegador. Nunca tendremos acceso a esta contraseña.</p>
         <div class="form-group">
-            <label for="passwordLength">Password Length: <span id="lengthDisplay">12</span></label>
+            <label for="passwordLength">Longitud de la Contraseña: <span id="lengthDisplay">12</span></label>
             <input type="range" class="form-control-range" id="passwordLength" min="4" max="64" value="12" oninput="updateLengthDisplay(this.value); generatePassword();">
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="includeUppercase" onchange="generatePassword()" checked>
-            <label class="form-check-label" for="includeUppercase">Include Uppercase Letters</label>
+            <label class="form-check-label" for="includeUppercase">Incluir Letras Mayúsculas</label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="includeNumbers" onchange="generatePassword()" checked>
-            <label class="form-check-label" for="includeNumbers">Include Numbers</label>
+            <label class="form-check-label" for="includeNumbers">Incluir Números</label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="includeSymbols" onchange="generatePassword()" checked>
-            <label class="form-check-label" for="includeSymbols">Include Symbols</label>
+            <label class="form-check-label" for="includeSymbols">Incluir Símbolos</label>
         </div>
         <div class="mt-3">
-            <label>Password: </label>
+            <label>Contraseña: </label>
             <input type="text" class="form-control" id="generatedPassword" readonly>
         </div>
         <div class="mt-3">
-            <label>Strength: </label>
+            <label>Seguridad de contraseña: </label>
             <span id="passwordStrength"></span>
         </div>
         <div>
-            <button id="copyBtn" class="btn btn-info mt-3" onclick="copyPassword()">Copy Password</button>
+            <button id="copyBtn" class="btn btn-info mt-3" onclick="copyPassword()">Copiar Contraseña</button>
         </div>
     </div>
     <div class="container mt-5">
-        <h5>Want to know more about this app?</h5>
+        <h5>¿Quieres saber más sobre esta aplicación?</h5>
         <br>
-        <p>Visit my <a href="https://github.com/jorgesoft">GitHub! </a></p>
-        <p>Strength calculated with <a href="https://github.com/dropbox/zxcvbn">dropbox/zxcvbn</a></p>
+        <p>Consulta el código fuente en <a href="https://github.com/jorgesoft/contrasegura.com">GitHub</a>.</p>
+        <p>Fuerza calculada con <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</p>
+        <br>
+        <br>
     </div>
-    <script src="script.js"></script>
+    <script src="static/script.js"></script>
 </body>
 </html>
